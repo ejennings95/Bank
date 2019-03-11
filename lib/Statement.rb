@@ -1,4 +1,5 @@
 require_relative './DateOfTransaction.rb'
+require_relative './Printer.rb'
 
 class Statement
 
@@ -14,7 +15,8 @@ class Statement
     @transactions << save_transaction
   end
 
-  def print
-    "#{@transactions[0][0]}."
+  def print(printer = Printer.new)
+    printer.print_header
+    printer.print(@transactions)
   end
 end

@@ -1,3 +1,5 @@
+require_relative './Statement.rb'
+
 class Account
 
   attr_reader :balance
@@ -18,7 +20,7 @@ class Account
       raise 'Insufficient funds.'
     else
       @balance -= amount
-      @statement.new_transaction(0, amount, @balance)  
+      @statement.new_transaction(0, amount, @balance)
       "You have succesfully withdrawn £#{amount}. Your balance is now £#{@balance}."
     end
   end

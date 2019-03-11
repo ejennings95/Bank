@@ -21,12 +21,12 @@ describe Account do
     #   expect(statement.print).to eq "#{date} || 100 || 0 || 100."
     # end
 
-    it "should  print the header followed by the transaction" do
+    it "should print the header followed by the transaction" do
       statement = Statement.new
       account = Account.new(statement)
       date = Time.now.strftime("%d/%m/%y")
       account.deposit(100)
-      expect { statement.print }.to output("Date || Deposits || Withdrawls || Balance\n#{date} || 100 || 0 || 100.").to_stdout
+      expect { statement.print }.to output("Date || Deposits || Withdrawls || Balance\n#{date} || 100 || 0 || 100.\n").to_stdout
     end
   end
 end
