@@ -13,7 +13,10 @@ class Account
 
   def withdraw(amount)
     if @balance < amount
-      raise 'Insufficient funds.' 
+      raise 'Insufficient funds.'
+    else
+      @balance -= amount
+      "You have succesfully withdrawn £#{amount}. Your balance is now £#{@balance}."
     end
   end
 end
