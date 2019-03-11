@@ -10,6 +10,6 @@ describe Account do
   end
 
   it "should be possible to deposit money to your account" do
-    expect(@account.deposit(10)).to eq "You have succesfully deposited £10."
+    expect(@account.deposit(10)).to eq "You have succesfully deposited £10. Your balance is now £10."
   end
 end
