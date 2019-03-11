@@ -1,3 +1,5 @@
+require_relative './DateOfTransaction.rb'
+
 class Statement
 
   attr_reader :transactions
@@ -6,9 +8,9 @@ class Statement
     @transactions = []
   end
 
-  def new_transaction(deposited, withdrawn, balance)
+  def new_transaction(date = DateOfTransaction.new.format, deposited, withdrawn, balance)
     save_transaction = []
-    save_transaction << "#{DateOfTransaction.format}, #{deposited}, #{withdrawn}, #{balance}"
+    save_transaction << "#{date}, #{deposited}, #{withdrawn}, #{balance}"
     @transactions << save_transaction
   end
 end
