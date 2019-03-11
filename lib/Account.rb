@@ -10,4 +10,10 @@ class Account
     @balance += amount
     "You have succesfully deposited £#{amount}. Your balance is now £#{@balance}."
   end
+
+  def withdraw(amount)
+    if @balance < amount
+      raise 'Insufficient funds.' 
+    end
+  end
 end
