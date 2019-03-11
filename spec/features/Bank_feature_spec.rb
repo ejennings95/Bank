@@ -1,4 +1,5 @@
 require_relative '../../lib/Account.rb'
+require_relative '../../lib/Statement.rb'
 
 describe Account do
 
@@ -14,10 +15,10 @@ describe Account do
   context "Printed statments" do
     it 'should have the date of the transaction and final balance' do
       account = Account.new
-      statement = Statment.new
-      date = Time.now.strftime(DD/MM/YY)
+      statement = Statement.new
+      date = Time.now.strftime("%d/%m/%y")
       account.deposit(100)
-      expect(statment.print).to eq "#{date} || 100 || 0 || 100."
+      expect(statement.print).to eq "#{date} || 100 || 0 || 100."
     end
   end
 end
