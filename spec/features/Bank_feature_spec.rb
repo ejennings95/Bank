@@ -13,14 +13,6 @@ describe Account do
   end
 
   context "Printed statments" do
-    # it 'should have the date of the transaction and final balance' do
-    #   statement = Statement.new
-    #   account = Account.new(statement)
-    #   date = Time.now.strftime("%d/%m/%y")
-    #   account.deposit(100)
-    #   expect(statement.print).to eq "#{date} || 100 || 0 || 100."
-    # end
-
     it "should print the header followed by the transaction" do
       statement = Statement.new
       account = Account.new(statement)

@@ -10,9 +10,7 @@ class Statement
   end
 
   def new_transaction(date = DateOfTransaction.new.format, deposited, withdrawn, balance)
-    save_transaction = []
-    save_transaction << "#{date} || #{deposited} || #{withdrawn} || #{balance}"
-    @transactions << save_transaction
+    @transactions << "#{date} || #{deposited} || #{withdrawn} || #{balance}"
   end
 
   def print(printer = Printer.new)

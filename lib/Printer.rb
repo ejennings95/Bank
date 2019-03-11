@@ -7,7 +7,7 @@ class Printer
   def print(transactions)
     count = 0
     while count < transactions.length
-      puts "#{transactions[count][0]}."
+      puts "#{transactions[count]}."
       count += 1
     end
   end
