@@ -16,4 +16,9 @@ describe Account do
   it "should not be possible to withdraw more money than is in your account" do
     expect { @account.withdraw(1) }.to raise_error 'Insufficient funds.'
   end
+
+  it "should be possible to withdraw if the funds are available" do
+    @account.deposit(10)
+    expect(@account.withdraw(5)).to eq "You have succesfully withdrawn £5. Your balance is now £5."
+  end
 end
