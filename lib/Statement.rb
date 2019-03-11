@@ -13,4 +13,8 @@ class Statement
     save_transaction << "#{date}, #{deposited}, #{withdrawn}, #{balance}"
     @transactions << save_transaction
   end
+
+  def print
+    "#{@transactions[0][0].gsub(', ', ' || ')}."
+  end
 end
