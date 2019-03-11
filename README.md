@@ -49,3 +49,36 @@ As an Account owner,
 So I can keep track of my spending,
 I want to be able to view my bank statement.
 ```
+
+#### Example of use in IRB
+
+Clone this repo then using IRB:
+
+```
+2.5.1 :001 > require './lib/Account'
+ => true
+2.5.1 :002 > my_statement = Statement.new
+ => #<Statement:0x00007f9968075bf8 @transactions=[]>
+2.5.1 :003 > my_account = Account.new(my_statement)
+ => #<Account:0x00007f99691885a8 @balance=0, @statement=#<Statement:0x00007f9968075bf8 @transactions=[]>>
+2.5.1 :004 > my_account.deposit(1000)
+ => "You have successfully deposited £1000. Your balance is now £1000."
+2.5.1 :005 > my_account.withdraw(550)
+ => "You have successfully withdrawn £550. Your balance is now £450."
+2.5.1 :006 > my_account.deposit(1000)
+ => "You have successfully deposited £1000. Your balance is now £1450."
+2.5.1 :007 > my_statement.print
+Date || Deposits || Withdrawals || Balance
+11/03/19 || 1000 || 0 || 1000.
+11/03/19 || 0 || 550 || 450.
+11/03/19 || 1000 || 0 || 1450.
+```
+
+If there are insufficient funds to withdraw:
+
+```
+2.5.1 :003 > my_account.deposit(10)
+ => "You have successfully deposited £10. Your balance is now £10."
+2.5.1 :004 > my_account.withdraw(25)
+RuntimeError (Insufficient funds.)
+```
