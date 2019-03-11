@@ -1,7 +1,7 @@
 class Printer
 
   def print_header
-    puts "Date || Deposits || Withdrawls || Balance"
+    puts "Date || Deposits || Withdrawals || Balance"
   end
 
   def print(transactions)

@@ -12,7 +12,7 @@ class Account
   def deposit(amount)
     @balance += amount
     @statement.new_transaction(amount, 0, @balance)
-    "You have succesfully deposited £#{amount}. Your balance is now £#{@balance}."
+    "You have successfully deposited £#{amount}. Your balance is now £#{@balance}."
   end
 
   def withdraw(amount)
@@ -21,7 +21,7 @@ class Account
     else
       @balance -= amount
       @statement.new_transaction(0, amount, @balance)
-      "You have succesfully withdrawn £#{amount}. Your balance is now £#{@balance}."
+      "You have successfully withdrawn £#{amount}. Your balance is now £#{@balance}."
     end
   end
 end

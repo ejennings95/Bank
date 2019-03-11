@@ -10,7 +10,7 @@ describe Account do
   end
 
   it "should be possible to deposit money to your account" do
-    expect(@account.deposit(10)).to eq "You have succesfully deposited £10. Your balance is now £10."
+    expect(@account.deposit(10)).to eq "You have successfully deposited £10. Your balance is now £10."
   end
 
   it "should change the balance when money is deposited" do
@@ -28,6 +28,6 @@ describe Account do
 
   it "should be possible to withdraw if the funds are available" do
     @account.deposit(10)
-    expect(@account.withdraw(5)).to eq "You have succesfully withdrawn £5. Your balance is now £5."
+    expect(@account.withdraw(5)).to eq "You have successfully withdrawn £5. Your balance is now £5."
   end
 end

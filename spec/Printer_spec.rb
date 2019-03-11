@@ -5,8 +5,8 @@ describe Printer do
     @printer = Printer.new
   end
 
-  it "should print the header: 'Date || Deposits || Withdrawls || Balance'" do
-    expect { @printer.print_header }.to output("Date || Deposits || Withdrawls || Balance\n").to_stdout
+  it "should print the header: 'Date || Deposits || Withdrawals || Balance'" do
+    expect { @printer.print_header }.to output("Date || Deposits || Withdrawals || Balance\n").to_stdout
   end
 
   it "should print the correct figures in the correct columns" do
