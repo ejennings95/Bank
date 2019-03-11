@@ -10,11 +10,11 @@ class Statement
 
   def new_transaction(date = DateOfTransaction.new.format, deposited, withdrawn, balance)
     save_transaction = []
-    save_transaction << "#{date}, #{deposited}, #{withdrawn}, #{balance}"
+    save_transaction << "#{date} || #{deposited} || #{withdrawn} || #{balance}"
     @transactions << save_transaction
   end
 
   def print
-    "#{@transactions[0][0].gsub(', ', ' || ')}."
+    "#{@transactions[0][0]}."
   end
 end

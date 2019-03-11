@@ -13,7 +13,7 @@ describe Statement do
   it "should save every transaction as an array of arrays" do
     date = testdate
     @statement.new_transaction(date, 100, 0, 100)
-    expect(@statement.transactions[0]).to eq ["#{date}, 100, 0, 100"]
+    expect(@statement.transactions[0]).to eq ["#{date} || 100 || 0 || 100"]
   end
 
   it "should save every transaction as an array of arrays" do
@@ -21,6 +21,6 @@ describe Statement do
     date2 = testdate2
     @statement.new_transaction(date, 100, 0, 100)
     @statement.new_transaction(date2, 0, 50, 50)
-    expect(@statement.transactions[1]).to eq ["#{date2}, 0, 50, 50"]
+    expect(@statement.transactions[1]).to eq ["#{date2} || 0 || 50 || 50"]
   end
 end
