@@ -8,12 +8,6 @@ describe Statement do
     @statement = Statement.new
   end
 
-  it 'should save every transaction' do
-    date = testdate
-    @statement.new_transaction(100, 0, 100, date)
-    expect(@statement.transactions[0]).to eq "#{date} || 100 || 0 || 100"
-  end
-
   it 'should add the transaction to the transactions array' do
     date = testdate
     expect { @statement.new_transaction(100, 0, 100, date) }.to change { @statement.transactions.length }.by(1)
