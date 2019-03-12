@@ -16,12 +16,16 @@ class Account
   end
 
   def withdraw(amount)
-    if @balance < amount
-      raise 'Insufficient funds.'
-    else
+    if sufficient_funds?(amount)
       @balance -= amount
       @statement.new_transaction(0, amount, @balance)
       "You have successfully withdrawn £#{amount}. Your balance is now £#{@balance}."
     end
+  end
+
+  private
+
+  def sufficient_funds?(amount)
+    (@balance > amount) ? true : (raise 'Insufficient funds.')
   end
 end
