@@ -24,6 +24,14 @@ date || credit || debit || balance
 10/01/2012 || 1000.00 || || 1000.00
 ```
 
+#### Approach and structure of my code
+
+For this project, I aimed to write code following the single responsibility principle and encapsulation. I used the TDD procedure to drive my code and decided to use 4 classes with dependency injection to allow them to talk to one another.
+
+I have included a printer class and a date of transaction class to remove the need of these responsibilities from the statement class.
+
+I broke down each method into less than 5 lines and had no class longer than 30. This suggested the principles were followed as well as keeping my code clean.
+
 #### User stories
 
 ```
