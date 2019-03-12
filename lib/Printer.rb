@@ -1,7 +1,6 @@
 class Printer
-
   def print_header
-    puts "Date || Deposits || Withdrawals || Balance"
+    puts 'Date || Deposits || Withdrawals || Balance'
   end
 
   def print(transactions)
@@ -11,5 +10,4 @@ class Printer
       count += 1
     end
   end
-
 end

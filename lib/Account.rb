@@ -1,7 +1,6 @@
-require_relative './Statement.rb'
+require_relative './statement.rb'
 
 class Account
-
   attr_reader :balance
 
   def initialize(statement = Statement.new)
@@ -16,16 +15,15 @@ class Account
   end
 
   def withdraw(amount)
-    if sufficient_funds?(amount)
-      @balance -= amount
-      @statement.new_transaction(0, amount, @balance)
-      "You have successfully withdrawn £#{amount}. Your balance is now £#{@balance}."
-    end
+    sufficient_funds?(amount)
+    @balance -= amount
+    @statement.new_transaction(0, amount, @balance)
+    "You have successfully withdrawn £#{amount}. Your balance is now £#{@balance}."
   end
 
   private
 
   def sufficient_funds?(amount)
-    (@balance > amount) ? true : (raise 'Insufficient funds.')
+    @balance > amount ? true : (raise 'Insufficient funds.')
   end
 end

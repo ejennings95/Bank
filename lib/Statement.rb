@@ -1,15 +1,14 @@
-require_relative './DateOfTransaction.rb'
-require_relative './Printer.rb'
+require_relative './date_of_transaction.rb'
+require_relative './printer.rb'
 
 class Statement
-
   attr_reader :transactions
 
   def initialize
     @transactions = []
   end
 
-  def new_transaction(date = DateOfTransaction.new.format, deposited, withdrawn, balance)
+  def new_transaction(deposited, withdrawn, balance, date = DateOfTransaction.new.format)
     @transactions << "#{date} || #{deposited} || #{withdrawn} || #{balance}"
   end
 
