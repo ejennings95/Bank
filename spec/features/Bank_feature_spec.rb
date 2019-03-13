@@ -16,7 +16,7 @@ describe Account do
       account = Account.new(statement)
       date = Time.now.strftime('%d/%m/%y')
       account.deposit(100)
-      expect { statement.print }.to output("Date || Deposits || Withdrawals || Balance\n#{date} || 100.00 || 0 || 100.00.\n").to_stdout
+      expect { statement.print }.to output("Date || Deposits || Withdrawals || Balance\n#{date} || 100.00 || 0 || 100.00\n").to_stdout
     end
   end
 end

@@ -11,12 +11,14 @@ class Account
   def deposit(amount)
     @balance += amount.round(2)
     @statement.new_transaction(two_decimal_places(amount), 0, two_decimal_places(@balance))
+    @balance.round(2)
   end
 
   def withdraw(amount)
     sufficient_funds?(amount)
     @balance -= amount.round(2)
     @statement.new_transaction(0, two_decimal_places(amount), two_decimal_places(@balance))
+    @balance.round(2)
   end
 
   private
