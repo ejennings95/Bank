@@ -4,7 +4,7 @@ In this project, I am building a program which can keep track of deposits, withd
 
 ### Requirements
 
-* You should be able to interact with your code via a REPL like IRB or the JavaScript console.  (You don't need to implement a command line interface that takes input from STDIN.)
+* You should be able to interact with your code via a REPL like IRB (You don't need to implement a command line interface that takes input from STDIN).
 * Deposits, withdrawal.
 * Account statement (date, amount, balance) printing.
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
@@ -31,6 +31,15 @@ For this project, I aimed to write code following the single responsibility prin
 I have included a printer class and a date of transaction class to remove the need of these responsibilities from the statement class.
 
 I broke down each method into less than 5 lines and had no class longer than 30. This suggested the principles were followed as well as keeping my code clean.
+
+#### Assumptions made
+
+In this program I have made a couple of assumptions which strays the code away from the example above:
+
+- I return 0 instead of empty gaps in the columns to allow for the knowledge that this was not a misprint
+- I have capitalised the column headers incase this print was to go to the account owner
+- I originally had a string being returned stating the transaction and the balance. After re-thinking this, I see my Account class as a backend and therefore does not need to return a string. I have replaced this with the balance
+- I have added an error to be thrown if the account owner attempts to withdraw money that is not available
 
 #### User stories
 
@@ -60,33 +69,31 @@ I want to be able to view my bank statement.
 
 #### Example of use in IRB
 
-Clone this repo then using IRB:
+Clone this repo then using IRB (type irb into the terminal):
 
 ```
-2.5.1 :001 > require './lib/Account'
+2.5.1 :001 > require './lib/account'
  => true
-2.5.1 :002 > my_statement = Statement.new
- => #<Statement:0x00007f9968075bf8 @transactions=[]>
-2.5.1 :003 > my_account = Account.new(my_statement)
- => #<Account:0x00007f99691885a8 @balance=0, @statement=#<Statement:0x00007f9968075bf8 @transactions=[]>>
-2.5.1 :004 > my_account.deposit(1000)
- => "You have successfully deposited £1000. Your balance is now £1000."
-2.5.1 :005 > my_account.withdraw(550)
- => "You have successfully withdrawn £550. Your balance is now £450."
-2.5.1 :006 > my_account.deposit(1000)
- => "You have successfully deposited £1000. Your balance is now £1450."
-2.5.1 :007 > my_statement.print
-Date || Deposits || Withdrawals || Balance
-11/03/19 || 1000 || 0 || 1000.
-11/03/19 || 0 || 550 || 450.
-11/03/19 || 1000 || 0 || 1450.
-```
-
-If there are insufficient funds to withdraw:
-
-```
-2.5.1 :003 > my_account.deposit(10)
- => "You have successfully deposited £10. Your balance is now £10."
-2.5.1 :004 > my_account.withdraw(25)
+2.5.1 :002 > statement = Statement.new
+ => #<Statement:0x00007fb1100eb820 @transactions=[]>
+2.5.1 :003 > account = Account.new(statement)
+ => #<Account:0x00007fb1100e2450 @balance=0, @statement=#<Statement:0x00007fb1100eb820 @transactions=[]>>
+2.5.1 :004 > account.withdraw(10)
 RuntimeError (Insufficient funds.)
+2.5.1 :005 > account.deposit(100)
+ => 100
+2.5.1 :006 > account.withdraw(11.99)
+ => 88.01
+2.5.1 :007 > statement.print
+Date || Deposits || Withdrawals || Balance
+13/03/19 || 0 || 11.99 || 88.01
+13/03/19 || 100.00 || 0 || 100.00
 ```
+
+#### Testing
+
+To test this app you need to:
+
+- clone the repo
+- bundle install
+- run 'rspec' in the terminal
