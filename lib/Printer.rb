@@ -4,10 +4,10 @@ class Printer
   end
 
   def print(transactions)
-    count = 0
-    while count < transactions.length
-      puts "#{transactions[count]}."
-      count += 1
+    count = 1
+      while count <= transactions.length
+        puts "#{transactions[transactions.length - count]}"
+        count += 1
+      end
     end
   end
-end
